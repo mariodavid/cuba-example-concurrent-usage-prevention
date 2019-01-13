@@ -4,20 +4,20 @@ This example shows how to use CUBAs different possibilities to prohibit concurre
 
 Sometimes certain resources of an application like a particular entity or even more general a particular part of the application should only accessed by one particular user or the system itself at a time in order to prevent the following situation (called lost update problem in DB terms):
 
-## Scenario: Lost update of Customer data for `Barney Gumble`
+## Scenario: Lost update of Customer data for `Zapp Brannigan`
 
-1. `10:30`: Customer `Barney Gumble` sends an email in order to inform about his marriage with `Edna Krababbel`. Therefore he wants to update his last name to `Krababbel-Gumble`
-2. `10:35`: User `leia` reads the email and opens the email and also the Customer screen from `Barney Gumble`. Directly after that her boss - `Jabba the Hutt` calls her in for a urgent task. She leaves the customer details screen open. 
-3. `10:40`: `Barney` calls the hotline, because the marriage did not last long and is already gone. But as he found this lovely girl `Elizabeth Hoover` - he now wants to update his name to `Hoover` because they are in love. User `luke` accepts the request as he does not know anything about the previous email, opens the Customer screen and changes the name to `Barney Hoover`.
-4. `10:50`: User `leia` is back on her desk and wants to finish her task of updating `Barney Gumble` to `Bareny Krababbel-Gumble`. As she has the customer screen already open, she just changes the name and saves it.
+1. `10:30`: Customer `Zapp Brannigan` sends an email in order to inform about his marriage with `Kif Kroker`. Therefore he wants to update his last name to `Kroker-Brannigan`
+2. `10:35`: User `leia` reads the email and opens the email and also the Customer screen from `Zapp Brannigan`. Directly after that her boss - `Jabba the Hutt` calls her in for a urgent task. She leaves the customer details screen open. 
+3. `10:40`: `Zapp` calls the hotline, because the marriage did not last long and is already gone. But as he found this lovely girl `Amy Wong` - he now wants to update his name to `Wong` because they are in love. User `luke` accepts the request as he does not know anything about the previous email, opens the Customer screen and changes the name to `Zapp Wong`.
+4. `10:50`: User `leia` is back on her desk and wants to finish her task of updating `Zapp Brannigan` to `Bareny Kroker-Brannigan`. As she has the customer screen already open, she just changes the name and saves it.
 
 Let's look at the data that has been stored in the system:
 
-1. `10:30` - Customer `Barney Gumble`
-2. `10:40` - Customer `Barney Hoover`
-3. `10:50` - Customer `Barney Krababbel-Gumble`
+1. `10:30` - Customer `Zapp Brannigan`
+2. `10:40` - Customer `Zapp Wong`
+3. `10:50` - Customer `Zapp Kroker-Brannigan`
 
-As we have seen from the interactions with `Barney` what is finally stored in the system is wrong and does not reflect the real world as the final name should be `Barney Hoover` instead of `Barney Krababbel-Gumble`.
+As we have seen from the interactions with `Zapp` what is finally stored in the system is wrong and does not reflect the real world as the final name should be `Zapp Wong` instead of `Zapp Kroker-Brannigan`.
 
 In order to solve this scenario, there are some established techniques. CUBA offers the following options:
 
@@ -42,7 +42,7 @@ In this example it is implemented for the entity: `Product`. `Product` contains 
 
 When a user opens the product details screen in order to update a particular product, the current value of the `version` attribute is also received in the screen. In case of the above example with the Customer entity an optimistic locking would look like this:
 
-1. before `10:30`: Customer `Barney Gumble` - version `1`
+1. before `10:30`: Customer `Zapp Brannigan` - version `1`
 2. at `10:35`: `leia` reads the customer with version `1`
 3. at `10:40`: `luke` reads the customer with version `1` and stores the customer. The version attribute is updated to value `2`.
 4. at `10:50`: `leia` wants to write the customer with the one she read at `10:35` with version `1`. On storing the new data for the Customer CUBA will throw a particular exception: `OptimisticLockException`, because the version in the DB is already `2` (from `10:35`) and now `leia` wants to store information with a current version of `1`. This prevents `leia` from storing the values based on old data.
@@ -66,7 +66,7 @@ More information on optimistic locking can be found here:
 
 Sometimes the optimistic locking approach is not appropriate because the system should not lead the user to believe that such operations are possible. In this case, the pessimistic locking approach is better suited. 
 
-In this case, the user is informed upfront, that another user is doing the wished operation (like changing the customer). This enforces the user to deal with a potential problem upfront. In the above `Barney Gumble` scenario, `luke` would have been informed when opening the Customer editor screen with the information, that `leia` is already trying to change the customer and would prevent `luke` from changing the customer all together.
+In this case, the user is informed upfront, that another user is doing the wished operation (like changing the customer). This enforces the user to deal with a potential problem upfront. In the above `Zapp Brannigan` scenario, `luke` would have been informed when opening the Customer editor screen with the information, that `leia` is already trying to change the customer and would prevent `luke` from changing the customer all together.
 
 This approach is a little bit more "secure" but also leads to a lot of "false negatives".
 
