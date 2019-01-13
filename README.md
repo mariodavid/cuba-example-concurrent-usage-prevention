@@ -61,6 +61,7 @@ that concurrent updates would be possible by the fact that CUBA shows the normal
 More information on optimistic locking can be found here:
 
 * [optimistic concurrency control (wikipedia)](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)
+* [JPA optimistic locking (baeldung.com)](https://www.baeldung.com/jpa-optimistic-locking)
 
 ## Pessimistic locking
 
@@ -103,7 +104,7 @@ CUBA additionally allows the administrator of the system to look at the current 
 
 It is also possible to use custom pessimistic locks programmatically. This is sometimes necessary when your lock should not be based on an entity instance. It also requires to configure a lock via the CUBA management UI. In this example it is configured for the name `customer-support-ticket`.
 
-![custom-lock](https://github.com/mariodavid/cuba-example-concurrent-usage-prevention/blob/master/img/custom-lock.png).
+![custom-lock](https://github.com/mariodavid/cuba-example-concurrent-usage-prevention/blob/master/img/custom-lock.png)
 
 For programmatically accessing the pessimistic locking functionality of CUBA, there are the two interaction points `LockManagerAPI` for the backend as well as `LockService` for the web layer (e.g. UI controllers). In the `CustomerSupportTicket` screen, the `LockService` is used in order to prevent creating support tickets for the same customer. It is done via the custom pessimistic lock with the name `customer-support-ticket`: `lockService.lock(CUSTOMER_SUPPORT_LOCK_NAME, customerId(customer))`.
 
@@ -167,4 +168,14 @@ public class CustomerSupportTicket extends AbstractWindow {
 The resulting UI in case of a simultaneous access looks like this:
 
 ![custom-lock.png](https://github.com/mariodavid/cuba-example-concurrent-usage-prevention/blob/master/img/custom-lock.png)
- 
+
+
+## Summary
+
+This example should show the different options that are available when it comes to preventing concurrent usage of resources. CUBA supports both optimistic and pessimistic locking. 
+
+Optimistic locking is the default behavior and will notify the user once an actual attempt to write concurrent changes by multiple users occurs. 
+
+For pessimistic locking, a configuration has to be set. After that the default CUBA editor screen will go into a read-only mode for multiple a particular entity instance in case multiple users are opening the same entity editor concurrently.
+
+CUBA also offers API to programmatically use pessimistic locking so that is can be used in non-entity scenarios.
