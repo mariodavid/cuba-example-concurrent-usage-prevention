@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="cepl$LineItem.edit"
+            template="com/rtcab/cepl/web/lineitem/line-item-edit.xml"/>
+    <screen id="cepl$Order.edit"
+            template="com/rtcab/cepl/web/order/order-edit.xml"/>
+    <screen id="cepl$Customer.browse"
+            template="com/rtcab/cepl/web/customer/customer-browse.xml"/>
+    <screen id="cepl$Customer.edit"
+            template="com/rtcab/cepl/web/customer/customer-edit.xml"/>
+    <screen id="cepl$Order.browse"
+            template="com/rtcab/cepl/web/order/order-browse.xml"/>
+    <screen id="cepl$Product.browse"
+            template="com/rtcab/cepl/web/product/product-browse.xml"/>
+    <screen id="cepl$Product.edit"
+            template="com/rtcab/cepl/web/product/product-edit.xml"/>
+    <screen id="customer-support-ticket"
+            template="/com/rtcab/cepl/web/customer/customer-support-ticket.xml"/>
+</screen-config>

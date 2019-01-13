@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.rtcab.cepl.web.lineitem.LineItemEdit"
+        datasource="lineItemDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.rtcab.cepl.web.lineitem">
+    <dsContext>
+        <datasource id="lineItemDs"
+                    class="com.rtcab.cepl.entity.LineItem"
+                    view="lineItem-view"/>
+        <collectionDatasource id="ordersDs"
+                              class="com.rtcab.cepl.entity.Order"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from cepl$Order e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="productsDs"
+                              class="com.rtcab.cepl.entity.Product"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from cepl$Product e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="lineItemDs">
+            <column width="250px">
+                <field property="number"/>
+                <field optionsDatasource="ordersDs"
+                       property="order"/>
+                <field optionsDatasource="productsDs"
+                       property="product"/>
+                <field property="price"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
