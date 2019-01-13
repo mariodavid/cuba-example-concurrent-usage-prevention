@@ -1,5 +1,5 @@
--- begin CEPL_CUSTOMER
-create table CEPL_CUSTOMER (
+-- begin CECUP_CUSTOMER
+create table CECUP_CUSTOMER (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -16,9 +16,9 @@ create table CEPL_CUSTOMER (
     --
     primary key (ID)
 )^
--- end CEPL_CUSTOMER
--- begin CEPL_ORDER
-create table CEPL_ORDER (
+-- end CECUP_CUSTOMER
+-- begin CECUP_ORDER
+create table CECUP_ORDER (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -33,9 +33,9 @@ create table CEPL_ORDER (
     --
     primary key (ID)
 )^
--- end CEPL_ORDER
--- begin CEPL_LINE_ITEM
-create table CEPL_LINE_ITEM (
+-- end CECUP_ORDER
+-- begin CECUP_LINE_ITEM
+create table CECUP_LINE_ITEM (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -52,9 +52,9 @@ create table CEPL_LINE_ITEM (
     --
     primary key (ID)
 )^
--- end CEPL_LINE_ITEM
--- begin CEPL_PRODUCT
-create table CEPL_PRODUCT (
+-- end CECUP_LINE_ITEM
+-- begin CECUP_PRODUCT
+create table CECUP_PRODUCT (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -68,4 +68,4 @@ create table CEPL_PRODUCT (
     --
     primary key (ID)
 )^
--- end CEPL_PRODUCT
+-- end CECUP_PRODUCT

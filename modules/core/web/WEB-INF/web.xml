@@ -9,7 +9,7 @@
         <param-name>appPropertiesConfig</param-name>
         <param-value>
             
-            classpath:com/rtcab/cepl/app.properties
+            classpath:com/rtcab/cecup/app.properties
             /WEB-INF/local.app.properties
             "file:${catalina.base}/conf/app-core/local.app.properties"
         </param-value>

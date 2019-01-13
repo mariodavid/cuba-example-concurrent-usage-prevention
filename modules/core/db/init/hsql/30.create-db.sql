@@ -2,7 +2,7 @@
 
 insert into SYS_LOCK_CONFIG
 (ID, CREATE_TS, CREATED_BY, NAME, TIMEOUT_SEC)
-values ('30531104-8d8f-167d-8db2-f1a783f0ad97', '2019-01-12 18:23:58', 'admin', 'cepl$Customer', 300);
+values ('30531104-8d8f-167d-8db2-f1a783f0ad97', '2019-01-12 18:23:58', 'admin', 'cecup$Customer', 300);
 
 
 -- custom pessimistic locking configuration

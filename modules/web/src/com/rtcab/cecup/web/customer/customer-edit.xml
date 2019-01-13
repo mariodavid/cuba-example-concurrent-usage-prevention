@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.rtcab.cecup.web.customer.CustomerEdit"
+        datasource="customerDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.rtcab.cecup.web.customer">
+    <dsContext>
+        <datasource id="customerDs"
+                    class="com.rtcab.cecup.entity.Customer"
+                    view="customer-view">
+            <collectionDatasource id="ordersDs"
+                                  property="orders">
+                <collectionDatasource id="lineItemsDs" property="lineItems" />
+            </collectionDatasource>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="customerDs">
+            <column width="250px">
+                <field property="customerId" editable="false"/>
+                <field property="name"/>
+                <field property="firstName"/>
+                <field property="email"/>
+
+            </column>
+        </fieldGroup>
+        <groupBox id="ordersBox"
+                  caption="msg://com.rtcab.cecup.entity/Customer.orders">
+            <table id="ordersTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create" openType="DIALOG"/>
+                    <action id="edit" openType="DIALOG"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="orderDate"/>
+                    <column id="lineItems"/>
+                    <column id="totalAmount"/>
+                </columns>
+                <rows datasource="ordersDs"/>
+                <buttonsPanel>
+                    <button action="ordersTable.create"/>
+                    <button action="ordersTable.edit"/>
+                    <button action="ordersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://customerSupportTicketCaption"
+        class="com.rtcab.cecup.web.customer.CustomerSupportTicket"
+        messagesPack="com.rtcab.cecup.web.customer">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <richTextArea width="100%"/>
+        <buttonsPanel id="actions">
+            <button id="printInteraction" caption="msg://printInteraction" invoke="printInteraction"/>
+            <button id="closeInteraction" caption="mainMsg://actions.Cancel" invoke="closeInteraction"/>
+        </buttonsPanel>
+    </layout>
+</window>

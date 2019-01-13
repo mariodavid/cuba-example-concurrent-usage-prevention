@@ -8,7 +8,7 @@
       maxIdle="2"
       maxWaitMillis="5000"
       driverClassName="org.hsqldb.jdbc.JDBCDriver"
-      url="jdbc:hsqldb:hsql://localhost/cepl"
+      url="jdbc:hsqldb:hsql://localhost/cecup"
       username="sa"
       password=""/>
 

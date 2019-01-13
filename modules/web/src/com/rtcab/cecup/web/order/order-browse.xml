@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.rtcab.cecup.web.order.OrderBrowse"
+        focusComponent="ordersTable"
+        lookupComponent="ordersTable"
+        messagesPack="com.rtcab.cecup.web.order">
+    <dsContext>
+        <groupDatasource id="ordersDs"
+                         class="com.rtcab.cecup.entity.Order"
+                         view="order-view">
+            <query>
+                <![CDATA[select e from cecup$Order e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ordersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ordersTable"
+                datasource="ordersDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="ordersTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="createInvoice"
+                        caption="msg://createInvoice"
+                        icon="DIAMOND"
+                        invoke="createInvoice"
+                        trackSelection="true"/>
+            </actions>
+            <columns>
+                <column id="orderDate"/>
+                <column id="customer"/>
+            </columns>
+            <rows datasource="ordersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ordersTable.create"/>
+                <button id="editBtn"
+                        action="ordersTable.edit"/>
+                <button id="removeBtn"
+                        action="ordersTable.remove"/>
+                <button id="createInvoiceBtn"
+                        action="ordersTable.createInvoice"
+                        />
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

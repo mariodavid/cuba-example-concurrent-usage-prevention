@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="pessimistic-locking"
+          icon="FROWN_O"
+          insertBefore="administration">
+        <item screen="cecup$Customer.browse"/>
+        <item screen="cecup$Order.browse"/>
+    </menu>
+    <menu id="optimistic-locking"
+          icon="SMILE_O"
+          insertBefore="administration">
+        <item screen="cecup$Product.browse"/>
+    </menu>
+</menu-config>
