@@ -27,7 +27,7 @@ In order to solve this scenario, there are some established techniques. CUBA off
 
 In this example we will go through the different locking options.
 
-## Overview
+## Example Overview
 
 Here is an overview of the functionality of the different examples for the different locking solutions within a CUBA application:
 
@@ -72,7 +72,7 @@ In this case, the user is informed upfront, that another user is doing the wishe
 This approach is a little bit more "secure" but also leads to a lot of "false negatives".
 
 
-### automatic pessimistic locking for entity editors
+### Automatic pessimistic locking for entity editors
 
 CUBA offers automatic pessimistic locking for entity editors. It sets the editor in a read-only mode so that no changes to the entity are possible once one user opened the editor.
 
@@ -88,7 +88,7 @@ The resulting UI of the automatic pessimistic locking approach for the customer 
 
 
 
-### Lock overview
+### Overview of existing locks
 
 Normally locks have to be released once the operation is done. This in the case of the automatic pessimistic locking of CUBA happens when the user closes the entity editor. Unfortunately this is not always possible, because the user does not close the editor and closes the laptop e.g. This leads to open locks, that are not released. 
 
