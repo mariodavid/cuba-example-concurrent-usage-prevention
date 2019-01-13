@@ -1,4 +1,4 @@
-rootProject.name = 'cuba-example-pessimistic-locking'
+rootProject.name = 'cuba-example-concurrent-usage-prevention'
 def modulePrefix = 'app'
 include(":${modulePrefix}-global", ":${modulePrefix}-core", ":${modulePrefix}-web")
 project(":${modulePrefix}-global").projectDir = new File(settingsDir, 'modules/global')

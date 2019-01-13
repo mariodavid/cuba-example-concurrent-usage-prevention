@@ -2,9 +2,9 @@
 
 This example shows how to use CUBAs different possibilities to prohibit concurrent usage of resources (like entities).
 
-Sometimes certain resources of an application like a particular entity or even more general a particular part of the application should only accessed by one particular user or the system itself at a time in order to prevent the following situation:
+Sometimes certain resources of an application like a particular entity or even more general a particular part of the application should only accessed by one particular user or the system itself at a time in order to prevent the following situation (called lost update problem in DB terms):
 
-## Scenario: Customer `Barney Gumble` is accidentally updated twice
+## Scenario: Lost update of Customer data for `Barney Gumble`
 
 1. `10:30`: Customer `Barney Gumble` sends an email in order to inform about his marriage with `Edna Krababbel`. Therefore he wants to update his last name to `Krababbel-Gumble`
 2. `10:35`: User `leia` reads the email and opens the email and also the Customer screen from `Barney Gumble`. Directly after that her boss - `Jabba the Hutt` calls her in for a urgent task. She leaves the customer details screen open. 
@@ -57,6 +57,10 @@ The reason why it is called `optimistic` is because this strategy is optimistic 
 
 The difference to the pessimistic locking is that optimistic locking allows to open different reads of the resource and also leads the user to believe
 that concurrent updates would be possible by the fact that CUBA shows the normal screen editor for the entity without any restrictions. Only if the user(s) actually do the concurrent change, the system will prevent this.
+
+More information on optimistic locking can be found here:
+
+* [optimistic concurrency control (wikipedia)](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)
 
 ## Pessimistic locking
 
